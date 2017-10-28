@@ -1,0 +1,6 @@
+# NodeJS Stuff
+node_modules
+npm-debug.log
+
+# Application Specific
+config.js
