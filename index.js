@@ -186,3 +186,39 @@ httpd.route({
         });
     }
 });
+
+httpd.route({
+    method: 'GET',
+    path: '/v1/moon',
+    config: {
+        validate: {
+            query: {
+                lat: Joi.number().min(0).max(90).required(),
+                lon: Joi.number().min(-180).max(180).required(),
+            }
+        }
+    },
+    handler: (request, reply) => {
+        Util.rateLimited(request.info.remoteAddress)
+        .then( limited => {
+            if (limited) return reply(Boom.tooManyRequests());
+
+            Util.getMoonPhase(request.query.lon, request.query.lat)
+            .then( moon => {
+                return reply(moon);
+            })
+            .catch( err => {
+                console.log("Whoops, error!", err.error);
+                if (err.status == "ZERO_RESULTS") {
+                    reply(Boom.badData('Invalid Location'));
+                } else {
+                    reply(Boom.internal(`API Threw an unknown error ${err.status}`));
+                }
+            } );
+        })
+        .catch( err => {
+            throw err;
+            return reply(err);
+        });
+    }
+});
