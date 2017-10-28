@@ -111,3 +111,39 @@ httpd.route({
         });
     }
 });
+
+httpd.route({
+    method: 'GET',
+    path: '/v1/weather',
+    config: {
+        validate: {
+            query: {
+                location: Joi.string().required()
+            }
+        }
+    },
+    handler: (request, reply) => {
+        Util.rateLimited(request.info.remoteAddress)
+        .then( limited => {
+            if (limited) return reply(Boom.tooManyRequests());
+
+            let location = request.query.location;
+            Util.getWeather(location)
+            .then( weather => {
+                return reply(weather);
+            })
+            .catch( err => {
+                console.log("Whoops, error!", err.error);
+                if (err.statusCode == 404) {
+                    reply(Boom.notFound('Location not found.'));
+                } else {
+                    reply(Boom.internal(`API Threw an unknown error ${err.message}`));
+                }
+            } );
+        })
+        .catch( err => {
+            throw err;
+            return reply(err);
+        });
+    }
+});
