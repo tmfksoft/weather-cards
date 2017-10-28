@@ -147,3 +147,42 @@ httpd.route({
         });
     }
 });
+
+httpd.route({
+    method: 'GET',
+    path: '/v1/timezone',
+    config: {
+        validate: {
+            query: {
+                lat: Joi.number().min(0).max(90).required(),
+                lon: Joi.number().min(-180).max(180).required(),
+            }
+        }
+    },
+    handler: (request, reply) => {
+        Util.rateLimited(request.info.remoteAddress)
+        .then( limited => {
+            if (limited) return reply(Boom.tooManyRequests());
+
+            Util.getTimezone(request.query.lon, request.query.lat)
+            .then( timezone => {
+                if (timezone.status != "OK") {
+                    if (timezone.status == "ZERO_RESULTS") return reply(Boom.badData("Invalid Location"));
+                }
+                return reply(timezone);
+            })
+            .catch( err => {
+                console.log("Whoops, error!", err.error);
+                if (err.statusCode == 404) {
+                    reply(Boom.notFound('Location not found.'));
+                } else {
+                    reply(Boom.internal(`API Threw an unknown error ${err.message}`));
+                }
+            } );
+        })
+        .catch( err => {
+            throw err;
+            return reply(err);
+        });
+    }
+});
