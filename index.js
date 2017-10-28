@@ -103,6 +103,10 @@ httpd.route({
                 .then( image => {
                     redisClient.set(cacheKey, image.toString('binary'), 'EX', 60);
                     reply(image).type('image/png');
+                })
+                .catch( err => {
+                    console.log("ERROR", err);
+                    reply(Boom.create(err.code, err.message));
                 });
             });
         })
