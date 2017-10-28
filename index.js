@@ -68,6 +68,31 @@ resourceManager.loadResources()
 // Inert for static files
 httpd.register(Inert);
 
+// Support for being behind a reverse proxy.
+httpd.ext({
+    type: 'onRequest',
+    method: function (request, reply) {
+        // Is the forwarded header set?
+        if (typeof request.headers['x-forwarded-for'] != "undefined") {
+            let proxyIP = request.info.remoteAddress;
+            let ips = request.headers['x-forwarded-for'].split(',');
+            if (config.servers.hapi.trustedProxies.indexOf(proxyIP) >= 0) {
+                request.info.proxyAddress = proxyIP;
+                request.info.remoteAddress = ips[0];
+            }
+        }
+        return reply.continue();
+    }
+});
+
+httpd.route({
+    method: 'GET',
+    path: '/v1/debug',
+    handler: (request, reply) => {
+        reply(request.info);
+    }
+});
+
 // Register our routes.
 httpd.route({
     method: 'GET',
