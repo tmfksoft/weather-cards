@@ -11,6 +11,9 @@ config = {
 	},
 	"general": {
 		"ratelimit": 50,
+		"trustedProxies": [
+			"127.0.0.1"
+		]
 	},
 	"logging":{
 		"format":"[%date%] %level% %text%",
