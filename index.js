@@ -76,7 +76,7 @@ httpd.ext({
         if (typeof request.headers['x-forwarded-for'] != "undefined") {
             let proxyIP = request.info.remoteAddress;
             let ips = request.headers['x-forwarded-for'].split(',');
-            if (config.servers.hapi.trustedProxies.indexOf(proxyIP) >= 0) {
+            if (config.servers.trustedProxies.indexOf(proxyIP) >= 0) {
                 request.info.proxyAddress = proxyIP;
                 request.info.remoteAddress = ips[0];
             }
