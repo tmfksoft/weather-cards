@@ -59,6 +59,7 @@ resourceManager.addImage("element_moon_halloween", "assets/elements/moon_hallowe
 resourceManager.addImage("element_night", "assets/elements/night.png");
 resourceManager.addImage("element_rain", "assets/elements/rain.png");
 resourceManager.addImage("element_moon_mask", "assets/elements/moon_mask.png");
+resourceManager.addImage("element_bats", "assets/elements/halloween_bats.png");
 
 // Setup our HTTPD Stuffs
 let httpd = new Hapi.Server();
