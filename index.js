@@ -31,35 +31,27 @@ resourceManager.addImage("na_night", "assets/backgrounds/na.png");
 // GUI Overlay
 resourceManager.addImage("overlay_white", "assets/backgrounds/overlay_white.png");
 resourceManager.addImage("overlay_black", "assets/backgrounds/overlay_black.png");
-// Sun
-resourceManager.addImage("sun_day", "assets/backgrounds/background_sun_day.png");
-resourceManager.addImage("sun_afternoon", "assets/backgrounds/background_sun_afternoon.png");
-resourceManager.addImage("sun_night", "assets/backgrounds/background_sun_night.png");
-// Very Cloudy
-resourceManager.addImage("cloudy_day", "assets/backgrounds/background_cloudy_day.png");
-resourceManager.addImage("cloudy_afternoon", "assets/backgrounds/background_cloudy_afternoon.png");
-resourceManager.addImage("cloudy_night", "assets/backgrounds/background_cloudy_night.png");
-// Very Cloudy
-resourceManager.addImage("light_cloud_day", "assets/backgrounds/background_light_cloud_day.png");
-resourceManager.addImage("light_cloud_afternoon", "assets/backgrounds/background_light_cloud_afternoon.png");
-resourceManager.addImage("light_cloud_night", "assets/backgrounds/background_light_cloud_night.png");
-// Mist
-resourceManager.addImage("mist_day", "assets/backgrounds/background_mist_day.png");
-resourceManager.addImage("mist_afternoon", "assets/backgrounds/background_mist_afternoon.png");
-resourceManager.addImage("mist_night", "assets/backgrounds/background_mist_night.png");
-// Light Rain / Drizzle
-resourceManager.addImage("light_rain_day", "assets/backgrounds/background_light_rain_day.png");
-resourceManager.addImage("light_rain_afternoon", "assets/backgrounds/background_light_rain_afternoon.png");
-resourceManager.addImage("light_rain_night", "assets/backgrounds/background_light_rain_night.png");
 
 // Night Assets
-resourceManager.addImage("element_clouds", "assets/elements/clouds.png");
+resourceManager.addImage("element_night", "assets/elements/night.png");
 resourceManager.addImage("element_moon", "assets/elements/moon.png");
 resourceManager.addImage("element_moon_halloween", "assets/elements/moon_halloween.png");
-resourceManager.addImage("element_night", "assets/elements/night.png");
-resourceManager.addImage("element_rain", "assets/elements/rain.png");
 resourceManager.addImage("element_moon_mask", "assets/elements/moon_mask.png");
+
+// Day Assets
+resourceManager.addImage("element_day", "assets/elements/day.png");
+resourceManager.addImage("element_afternoon", "assets/elements/afternoon.png");
+resourceManager.addImage("element_sun_bright", "assets/elements/sun_bright.png");
+resourceManager.addImage("element_sun_sunset", "assets/elements/sun_sunset.png");
+
+// General Assets
+resourceManager.addImage("element_clouds", "assets/elements/clouds.png");
+resourceManager.addImage("element_rain", "assets/elements/rain.png");
 resourceManager.addImage("element_bats", "assets/elements/halloween_bats.png");
+resourceManager.addImage("element_light_snow", "assets/elements/light_snow.png");
+resourceManager.addImage("element_heavy_snow", "assets/elements/heavy_snow.png");
+resourceManager.addImage("element_mist", "assets/elements/mist.png");
+resourceManager.addImage("element_dust", "assets/elements/dust.png");
 
 // Setup our HTTPD Stuffs
 let httpd = new Hapi.Server();
