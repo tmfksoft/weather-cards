@@ -52,6 +52,13 @@ resourceManager.addImage("light_rain_day", "assets/backgrounds/background_light_
 resourceManager.addImage("light_rain_afternoon", "assets/backgrounds/background_light_rain_afternoon.png");
 resourceManager.addImage("light_rain_night", "assets/backgrounds/background_light_rain_night.png");
 
+// Night Assets
+resourceManager.addImage("element_clouds", "assets/elements/clouds.png");
+resourceManager.addImage("element_moon", "assets/elements/moon.png");
+resourceManager.addImage("element_night", "assets/elements/night.png");
+resourceManager.addImage("element_rain", "assets/elements/rain.png");
+resourceManager.addImage("element_moon_mask", "assets/elements/moon_mask.png");
+
 // Setup our HTTPD Stuffs
 let httpd = new Hapi.Server();
 httpd.connection(config.servers.hapi);
@@ -109,7 +116,7 @@ httpd.route({
                 if (err) throw err;
     
                 // Is it there?
-                if (val != null) {
+                if (val != null && !config.dev) {
                     // Return from cache
                     let img = Buffer.from(val, 'binary');
                     return reply(img).type("image/png");
