@@ -55,6 +55,7 @@ resourceManager.addImage("light_rain_night", "assets/backgrounds/background_ligh
 // Night Assets
 resourceManager.addImage("element_clouds", "assets/elements/clouds.png");
 resourceManager.addImage("element_moon", "assets/elements/moon.png");
+resourceManager.addImage("element_moon_halloween", "assets/elements/moon_halloween.png");
 resourceManager.addImage("element_night", "assets/elements/night.png");
 resourceManager.addImage("element_rain", "assets/elements/rain.png");
 resourceManager.addImage("element_moon_mask", "assets/elements/moon_mask.png");
