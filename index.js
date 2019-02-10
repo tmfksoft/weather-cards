@@ -12,25 +12,24 @@ const redisClient = require('./lib/Redis.js');
 const resourceManager = require('./lib/ResourceManager.js');
 const Util = require('./lib/Util.js')(config.keys);
 
-// NAtive
+// Native
 const fs = require('fs');
 
 // = Add Fonts =
-resourceManager.addFont("weather", "assets/fonts/weather_font.fnt");
-resourceManager.addFont("weather_15", "assets/fonts/weather_font_15.fnt");
-resourceManager.addFont("open_sans_regular_20", "assets/fonts/open_sans_regular_20.fnt");
-resourceManager.addFont("open_sans_regular_15", "assets/fonts/open_sans_regular_15.fnt");
-resourceManager.addFont("open_sans_light_23_temp", "assets/fonts/open_sans_light_23_temp.fnt");
+//resourceManager.addFont("weather", "assets/fonts/weather_font.fnt");
+//resourceManager.addFont("weather_15", "assets/fonts/weather_font_15.fnt");
+//resourceManager.addFont("open_sans_regular_20", "assets/fonts/open_sans_regular_20.fnt");
+//resourceManager.addFont("open_sans_regular_15", "assets/fonts/open_sans_regular_15.fnt");
+//resourceManager.addFont("open_sans_light_23_temp", "assets/fonts/open_sans_light_23_temp.fnt");
+
+resourceManager.addFont("open_sans_regular", "assets/fonts/OpenSans-Regular.ttf", { family: 'Open Sans', weight: 400, style: 'normal' });
+resourceManager.addFont("open_sans_light", "assets/fonts/OpenSans-Light.ttf", { family: 'Open Sans Light', weight: 300 });
+resourceManager.addFont("weather_icons", "assets/fonts/weathericons-regular-webfont.ttf", { family: 'Weather Icons' });
 
 // = Add Images =
-// Fallbacks
-resourceManager.addImage("na_day", "assets/backgrounds/na.png");
-resourceManager.addImage("na_afternoon", "assets/backgrounds/na.png");
-resourceManager.addImage("na_night", "assets/backgrounds/na.png");
 
 // GUI Overlay
-resourceManager.addImage("overlay_white", "assets/backgrounds/overlay_white.png");
-resourceManager.addImage("overlay_black", "assets/backgrounds/overlay_black.png");
+resourceManager.addImage("overlay", "assets/elements/overlay.png");
 
 // Night Assets
 resourceManager.addImage("element_night", "assets/elements/night.png");

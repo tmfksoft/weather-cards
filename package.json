@@ -10,6 +10,7 @@
   "license": "ISC",
   "dependencies": {
     "boom": "^6.0.0",
+    "canvas": "^2.3.1",
     "hapi": "^16.6.2",
     "inert": "^4.2.1",
     "jimp": "^0.2.28",
