@@ -42,3 +42,12 @@ Run like any other node script with `node .`
 Heroku / Dokku
 =====
 Heroku and Dokku support is coming shortly so I can host this project myself in the cloud.
+
+For now, an untested patch has been applied adding the following changes:
+
+config.js has been added as a default config, this is used by Heroku or Dokku.
+PORT, GMAPS_KEY and OWP_KEY have been added.
+
+PORT = Set be Heroku and Dokku to be the default HTTP Port to listen on.
+OWP_KEY = The Open Weather Maps API Key - Set this yourself.
+GMAP_KEY = The Google Maps API Key - Set this yourself.
