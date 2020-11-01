@@ -1,3 +1,5 @@
+// This is the default "Production" Config
+// This is used by Heroku or Dokku to run the app out of the box with little setup.
 config = {
     "servers": {
         "hapi": {
