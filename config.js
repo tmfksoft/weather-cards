@@ -22,7 +22,7 @@ config = {
 	"dev": true,
 	"keys":{
 		"weather": process.env.OWM_KEY,
-    "google_maps": process.env.GMAP_KEY,
+    		"google_maps": process.env.GMAP_KEY,
 	}
 };
 module.exports = config;
