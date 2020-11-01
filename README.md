@@ -38,3 +38,7 @@ The `redis` section sets the port and host the api connects to redis on.
 Obtain API keys from OpenWeatherMap and Google Maps Timezone API and put them in the corresponding part of the configuration.
 
 Run like any other node script with `node .`
+
+Heroku / Dokku
+=====
+Heroku and Dokku support is coming shortly so I can host this project myself in the cloud.
