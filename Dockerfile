@@ -1,7 +1,7 @@
 FROM node:16.14.0
 
-RUN apt-get updated
-RUN apt-get install redis -y
+RUN apt-get update
+RUN apt-get install redis-server -y
 
 WORKDIR /app
 COPY . /app/
