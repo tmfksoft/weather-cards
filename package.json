@@ -4,7 +4,7 @@
   "description": "An API for providing weather cards",
   "main": "build/index.js",
   "scripts": {
-    "start": "build/index.js",
+    "start": "node .",
     "build": "vault-config && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },

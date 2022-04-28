@@ -1,12 +1,17 @@
 FROM node:16.14.0
 
 RUN apt-get update
-RUN apt-get install redis-server -y
+RUN apt-get install redis-server supervisor -y
 
-WORKDIR /app
-COPY . /app/
+USER node
 
-RUN yarn install
-RUN yarn build
+WORKDIR /home/node/app
+COPY --chown=node:node . /home/node/app/
 
-ENTRYPOINT [ "yarn", "start" ]
+RUN npm install
+RUN npm run build
+
+USER root
+ENV NODE_EV production
+
+ENTRYPOINT [ "supervisord", "-n" ]

@@ -4,7 +4,7 @@ config = {
     "servers": {
         "hapi": {
             "host": "0.0.0.0",
-            "port": process.env.PORT
+            "port": process.env.PORT || 5000
         },
         "redis": {
             "host": "127.0.0.1",
