@@ -29,15 +29,15 @@ Installation
 =====
 Getting the API up and running is pretty simple.
 
-Clone this repository into a directory and run `npm install`
+Clone this repository into a directory and run `npm install` followed by `npm build`
 
-Afterwards make a copy of config.sample.js and name it config.js
+Afterwards make a copy of config/default.js and name it config/production.js or config/development.js depending on your NODE_ENV
 Alter the server setup as you wish, the `hapi` section sets the port and host the api runs on.
 The `redis` section sets the port and host the api connects to redis on.
 
 Obtain API keys from OpenWeatherMap and Google Maps Timezone API and put them in the corresponding part of the configuration.
 
-Run like any other node script with `node .`
+Run like any other node script with `node .` or `npm start`
 
 Heroku / Dokku
 =====
