@@ -2,27 +2,42 @@
   "name": "weather-card",
   "version": "1.0.0",
   "description": "An API for providing weather cards",
-  "main": "index.js",
+  "main": "build/index.js",
   "scripts": {
-    "start": "index.js",
+    "start": "build/index.js",
+    "build": "vault-config && tsc",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "Thomas Edwards",
+  "author": "Thomas Burnett-Taylor",
   "license": "ISC",
   "dependencies": {
+    "@hapi/boom": "^9.1.4",
+    "@hapi/hapi": "^20.2.2",
+    "@hapi/inert": "^6.0.5",
     "boom": "^6.0.0",
     "canvas": "^2.3.1",
     "hapi": "^16.6.2",
     "inert": "^4.2.1",
     "jimp": "^0.2.28",
-    "joi": "^13.0.1",
+    "joi": "^17.6.0",
     "lodash": "^4.17.4",
     "moment": "^2.19.1",
-    "moment-timezone": "^0.5.13",
-    "redis": "^2.8.0",
+    "moment-timezone": "^0.5.34",
+    "node-fetch": "2",
+    "redis": "^4.0.6",
     "request": "^2.83.0",
     "request-promise": "^4.2.2",
-    "suncalc": "^1.8.0",
-    "uuid": "^3.1.0"
+    "suncalc": "^1.9.0",
+    "uuid": "^8.3.2",
+    "vault-config": "https://github.com/tmfksoft/vault-config"
+  },
+  "devDependencies": {
+    "@types/hapi__boom": "^9.0.1",
+    "@types/hapi__hapi": "^20.0.10",
+    "@types/hapi__inert": "^5.2.3",
+    "@types/node": "^17.0.29",
+    "@types/suncalc": "^1.8.1",
+    "@types/uuid": "^8.3.4",
+    "typescript": "^4.6.3"
   }
 }

@@ -1,19 +1,27 @@
-const Resource = require('./Resource.js');
+import Resource from "./Resource";
+import path from 'path';
 
 class ResourceManager {
+    private loaded: boolean = false;
+    private resources: Resource[] = [];
+
     constructor() {
-        this.resources = [];
-        this.loaded = false; // If we've already loaded then we'll auto load new resources
     }
-    addResource(id, path, type, metadata) {
+
+    addResource(id: string, resourcePath: string, type: 'image' | 'font', metadata?: { [ key: string ]: any }) {
+
+        console.log(`Adding Resource ${id}`, path.join(__dirname, resourcePath));
+
         if (arguments.length < 2) throw new Error('Resource must have at least two arguments!');
 
         if (this.getResource(id, type) != null) throw new Error('Resource of that type and ID already exists!');
+
+
         let resource = null;
         if (arguments.length == 2) {
-            resource = new Resource(id, path);
+            resource = new Resource(id, resourcePath, type);
         } else {
-            resource = new Resource(id, path, type);
+            resource = new Resource(id, resourcePath, type);
         }
         if (typeof metadata !== "undefined") {
             resource.metadata = metadata;
@@ -22,14 +30,14 @@ class ResourceManager {
         if (this.loaded) resource.load();
     }
 
-    addFont(id, path, metadata) {
+    addFont(id: string, path: string, metadata?: { [key: string]: any }) {
         return this.addResource(id, path, "font", metadata);
     }
-    addImage(id, path) {
+    addImage(id: string, path: string) {
         return this.addResource(id, path, "image");
     }
 
-    getResource(id, type) {
+    getResource(id: string, type: 'image' | 'font') {
         if (arguments.length < 1) throw new Error('Missing parameters!');
         for (let res of this.resources) {
             if (arguments.length == 2) {
@@ -40,10 +48,10 @@ class ResourceManager {
         }
         return null;
     }
-    getImage(id) {
+    getImage(id: string) {
         return this.getResource(id, "image");
     }
-    getFont(id) {
+    getFont(id: string) {
         return this.getResource(id, "font");
     }
     loadResources() {
@@ -60,4 +68,4 @@ class ResourceManager {
         })
     }
 }
-module.exports = new ResourceManager();
+export default ResourceManager;

@@ -1,6 +1,8 @@
 # NodeJS Stuff
 node_modules
 npm-debug.log
+package-lock.json
+yarn.lock
 
 # Application Specific
-config.js
+config/development.js

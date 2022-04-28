@@ -1,16 +1,20 @@
-const Jimp = require('jimp');
-const Canvas = require('canvas');
-const path = require('path');
+
+import Canvas from 'canvas';
+import path from 'path';
 
 class Resource {
-    constructor(id, path, type){
+    public id;
+    public path;
+    public type;
+    public data: undefined | Canvas.Image;
+    public metadata: { [key: string]: any } = {};
+
+    constructor(id: string, path: string, type: 'image' | 'font'){
         if (arguments.length < 2) throw new Error('Resource must have at least two arguments!');
         
         this.id = id;
         this.path = path;
         this.type = "image";
-        this.data = null;
-        this.metadata;
 
         if (arguments.length >= 3) {
             if (type.toLowerCase() == "image" || type.toLowerCase() == "font") {
@@ -24,10 +28,9 @@ class Resource {
             this.data = image;
             return image;
         } else if (this.type == "font") {
-            console.log(`Loading font ${this.id}`, this.metadata, this.path, path.join(__dirname,'..', this.path) );
+            console.log(`Loading font ${this.id}`, this.metadata, this.path );
             try {
-            let font = await Canvas.registerFont(path.join(__dirname,'..', this.path), this.metadata);
-            this.data = font;
+            let font = await Canvas.registerFont(this.path, this.metadata as any);
             return font;
             } catch (e) {
                 console.log("Failed to loaad font :<", e);
@@ -45,4 +48,5 @@ class Resource {
         return (this.type == "font" ? true : false);
     }
 }
-module.exports = Resource;
+
+export default Resource;
